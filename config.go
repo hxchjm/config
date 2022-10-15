@@ -20,20 +20,20 @@ func init() {
 	flag.StringVar(&_path, "conf", os.Getenv("CONF_PATH"), `config file path.`)
 }
 
-func Init() error{
+func Init() error {
 	var err error
 	if _path != "" {
-		if defaultConfig ,err= NewFile(_path);err!=nil{
+		if defaultConfig, err = NewFile(_path); err != nil {
 			return err
 		}
 	} else {
-		if defaultConfig,err=NewNacos();err!=nil{
+		if defaultConfig, err = NewNacos(); err != nil {
 			return err
 		}
 	}
 	return nil
 }
 
-func Get(key string, value interface{}) {
-	_ = defaultConfig.Get(key, &value)
+func Get(key string, value interface{}) error {
+	return defaultConfig.Get(key, &value)
 }

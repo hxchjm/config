@@ -7,6 +7,10 @@ import (
 	"os"
 )
 
+var (
+	ERRKeyNotFound = errors.New("Key not found")
+)
+
 type file struct {
 	path    string
 	content map[string]interface{}
@@ -27,7 +31,7 @@ func (f *file) Get(key string, value interface{}) error {
 	if v, ok := f.content[key]; ok {
 		return f.unmarshal(v, value)
 	}
-	return nil
+	return ERRKeyNotFound
 }
 
 func (f *file) Load() error {
