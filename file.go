@@ -32,7 +32,7 @@ func (f *file) Get(key string, value interface{}) error {
 	if v, ok := f.content[key]; ok {
 		return f.unmarshal(v, value)
 	}
-	return  errors.Wrap(ERRKeyNotFound, fmt.Sprintf(",key:%s", key))
+	return  errors.Wrap(ERRKeyNotFound, fmt.Sprintf("(%s)", key))
 }
 
 func (f *file) Load() error {
