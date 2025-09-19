@@ -3,6 +3,7 @@ package config
 import (
 	//"examples/config/config/file"
 	"flag"
+	"fmt"
 	"os"
 )
 
@@ -26,12 +27,12 @@ func Init() error {
 		if defaultConfig, err = NewFile(_path); err != nil {
 			return err
 		}
-	} else {
+	} else if _nacosHost != "" {
 		if defaultConfig, err = NewNacos(); err != nil {
 			return err
 		}
 	}
-	return nil
+	return fmt.Errorf("init config err")
 }
 
 func Bind(key string, value interface{}) error {
