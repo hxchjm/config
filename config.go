@@ -24,12 +24,12 @@ func init() {
 func Init() error {
 	var err error
 	if _path != "" {
-		if defaultConfig, err = NewFile(_path); err != nil {
-			return err
+		if defaultConfig, err = NewFile(_path); err == nil {
+			return nil
 		}
 	} else if _nacosHost != "" {
-		if defaultConfig, err = NewNacos(); err != nil {
-			return err
+		if defaultConfig, err = NewNacos(); err == nil {
+			return nil
 		}
 	}
 	return fmt.Errorf("init config err")
