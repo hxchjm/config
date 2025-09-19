@@ -75,7 +75,7 @@ func NewNacos() (Config, error) {
 	return n, nil
 }
 
-func (n *nacos) Get(key string, value interface{}) error {
+func (n *nacos) Bind(key string, value interface{}) error {
 	v, err := n.client.GetConfig(vo.ConfigParam{
 		DataId: key,
 		Group:  _nacosGroup,

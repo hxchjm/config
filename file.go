@@ -28,11 +28,11 @@ func NewFile(path string) (Config, error) {
 	return f, nil
 }
 
-func (f *file) Get(key string, value interface{}) error {
+func (f *file) Bind(key string, value interface{}) error {
 	if v, ok := f.content[key]; ok {
 		return f.unmarshal(v, value)
 	}
-	return  errors.Wrap(ERRKeyNotFound, fmt.Sprintf("(%s)", key))
+	return errors.Wrap(ERRKeyNotFound, fmt.Sprintf("(%s)", key))
 }
 
 func (f *file) Load() error {

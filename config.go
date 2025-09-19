@@ -7,7 +7,7 @@ import (
 )
 
 type Config interface {
-	Get(string, interface{}) error
+	Bind(string, interface{}) error
 }
 
 var (
@@ -34,6 +34,6 @@ func Init() error {
 	return nil
 }
 
-func Get(key string, value interface{}) error {
-	return defaultConfig.Get(key, &value)
+func Bind(key string, value interface{}) error {
+	return defaultConfig.Bind(key, value)
 }
